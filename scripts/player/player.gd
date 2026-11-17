@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const MOVE_SPEED: float = 90.0
 
-var facing: String = "down"
+var facing: PlayerConstants.Facing = PlayerConstants.Facing.FRONT
 var current_state: String = "Idle"
 
 
@@ -21,11 +21,19 @@ func get_movement_input() -> Vector2:
 
 func update_facing_from_vector(direction: Vector2) -> void:
 	if abs(direction.x) > abs(direction.y):
-		facing = "right" if direction.x > 0 else "left"
+		facing = PlayerConstants.Facing.RIGHT if direction.x > 0 else PlayerConstants.Facing.LEFT
 		return
 
 	if direction.y != 0:
-		facing = "down" if direction.y > 0 else "up"
+		facing = PlayerConstants.Facing.FRONT if direction.y > 0 else PlayerConstants.Facing.BACK
+
+
+func direction_name() -> String:
+	return PlayerConstants.facing_to_name(facing)
+
+
+func get_animation_name(prefix: String) -> String:
+	return "%s_%s" % [prefix, direction_name()]
 
 
 func set_animation(animation_name: String) -> void:

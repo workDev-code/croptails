@@ -11,12 +11,18 @@ Responsibilities:
 - forward physics and animation events to the active state
 """
 
-@export var initial_state: String = "Idle"
+@export var initial_state: PlayerConstants.State = PlayerConstants.State.IDLE
 
 var actor: CharacterBody2D
 var animated_sprite: AnimatedSprite2D
 var current_state: NodeState
 var states: Dictionary = {}
+
+
+static func state_to_key(state: Variant) -> String:
+	if state is PlayerConstants.State:
+		return PlayerConstants.state_to_key(state)
+	return String(state).to_lower()
 
 
 func _ready() -> void:
@@ -40,7 +46,7 @@ func _initialize() -> void:
 			states[String(child.name).to_lower()] = child
 
 	if current_state == null:
-		var key := String(initial_state).to_lower()
+		var key := state_to_key(initial_state)
 		if states.has(key):
 			change_state(initial_state)
 		else:
@@ -53,12 +59,12 @@ func _physics_process(delta: float) -> void:
 	current_state.physics_update(delta)
 
 
-func change_state(state_name: String) -> void:
-	if state_name == "":
+func change_state(state_name: Variant) -> void:
+	if state_name == null:
 		push_warning("NodeStateMachine: empty state name received.")
 		return
 
-	var key := String(state_name).to_lower()
+	var key := state_to_key(state_name)
 	if not states.has(key):
 		push_warning("NodeStateMachine: state '%s' not found." % state_name)
 		return

@@ -10,7 +10,7 @@ The state machine manages lifecycle and state transition execution.
 func enter() -> void:
 	if animated_sprite == null:
 		return
-	animated_sprite.play("idle_%s" % actor.facing)
+	animated_sprite.play(actor.get_animation_name("idle"))
 
 
 func physics_update(_delta: float) -> void:
@@ -23,8 +23,8 @@ func physics_update(_delta: float) -> void:
 	)
 
 	if input_vector != Vector2.ZERO:
-		state_machine.change_state("Walk")
+		state_machine.change_state(PlayerConstants.State.WALK)
 		return
 
 	if animated_sprite != null:
-		animated_sprite.play("idle_%s" % actor.facing)
+		animated_sprite.play(actor.get_animation_name("idle"))

@@ -10,7 +10,7 @@ The state machine itself remains responsible for switching states.
 func enter() -> void:
 	if animated_sprite == null:
 		return
-	animated_sprite.play("walk_%s" % actor.facing)
+	animated_sprite.play(actor.get_animation_name("walk"))
 
 
 func physics_update(_delta: float) -> void:
@@ -23,7 +23,7 @@ func physics_update(_delta: float) -> void:
 	)
 
 	if input_vector == Vector2.ZERO:
-		state_machine.change_state("Idle")
+		state_machine.change_state(PlayerConstants.State.IDLE)
 		return
 
 	if actor.has_method("update_facing_from_vector"):
@@ -37,4 +37,4 @@ func physics_update(_delta: float) -> void:
 	actor.move_and_slide()
 
 	if animated_sprite != null:
-		animated_sprite.play("walk_%s" % actor.facing)
+		animated_sprite.play(actor.get_animation_name("walk"))
