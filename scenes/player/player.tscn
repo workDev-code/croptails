@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://clo8x3sfatevm"]
+
+[ext_resource type="SpriteFrames" uid="uid://c8q0irij2itm2" path="res://resources/player/player_sprite_frames.tres" id="2_75vfm"]
+[ext_resource type="Script" uid="uid://dpa378ejy7kmo" path="res://assets/scenes/charecters/player/states/idle.gd" id="4_amh8i"]
+[ext_resource type="Script" uid="uid://iesckqvkpyl3" path="res://scripts/state_machine/node_state_machine.gd" id="4_xhgwt"]
+[ext_resource type="Script" uid="uid://dchmba5jktnq7" path="res://assets/scenes/charecters/player/states/walk.gd" id="5_ach0f"]
+[ext_resource type="Script" uid="uid://67mkct8x0eu7" path="res://assets/scenes/charecters/player/states/tool.gd" id="7_tool"]
+[ext_resource type="Script" uid="uid://cwdbgkgkewish" path="res://assets/scenes/charecters/player/player.gd" id="player_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_os4sw"]
+
+[node name="Player" type="CharacterBody2D" unique_id=21755249]
+position = Vector2(222, 86)
+script = ExtResource("player_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=179092930]
+position = Vector2(-6, 0)
+sprite_frames = ExtResource("2_75vfm")
+animation = &"idle_front"
+autoplay = "idle_front"
+frame_progress = 0.598324
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=991421604]
+position = Vector2(-6, -1)
+shape = SubResource("CircleShape2D_os4sw")
+
+[node name="StateMachine" type="Node" parent="." unique_id=655864341]
+script = ExtResource("4_xhgwt")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=2057790642]
+script = ExtResource("4_amh8i")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=891560350]
+script = ExtResource("5_ach0f")
+
+[node name="Tool" type="Node" parent="StateMachine" unique_id=807641961]
+script = ExtResource("7_tool")

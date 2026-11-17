@@ -1,6 +1,20 @@
 class_name NodeStateMachine
 extends Node
 
+
+"""`
+Đây là bộ quản lý trạng thái.
+
+Nhiệm vụ:
+- Tìm các State là node con.
+- Lưu danh sách State.
+- Xác định State ban đầu.
+- Quản lý State hiện tại.
+- Chuyển đổi State.
+- Gọi các hàm lifecycle tương ứng.
+"""`
+
+
 @export var initial_state: String = "idle"
 
 var actor: Player
