@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b8vuj3cc44e2t"]
 
 [ext_resource type="TileSet" uid="uid://4fu8svqq7pmu" path="res://tilesets/game_tile_set.tres" id="1_4o3hg"]
-[ext_resource type="PackedScene" uid="uid://clo8x3sfatevm" path="res://assets/scenes/charecters/player/player.tscn" id="2_yi3xs"]
+[ext_resource type="PackedScene" uid="uid://clo8x3sfatevm" path="res://scenes/player/player.tscn" id="2_yi3xs"]
 
 [node name="TestSceneTileMap" type="Node2D" unique_id=1120042040]
 position = Vector2(-72, 65)

@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://chdg5jcm06ycb" path="res://assets/game/characters/basic_charakter_actions.png" id="1_7m2h8"]
 [ext_resource type="Texture2D" uid="uid://xnkivoxl1hn4" path="res://assets/game/characters/basic_charakter_spritesheet.png" id="1_m6eni"]
-[ext_resource type="Script" uid="uid://dpa378ejy7kmo" path="res://assets/scenes/charecters/player/states/idle.gd" id="4_amh8i"]
-[ext_resource type="Script" uid="uid://iesckqvkpyl3" path="res://scripts/state_machine/node_state_machine.gd" id="4_xhgwt"]
-[ext_resource type="Script" uid="uid://dchmba5jktnq7" path="res://assets/scenes/charecters/player/states/walk.gd" id="5_ach0f"]
-[ext_resource type="Script" uid="uid://67mkct8x0eu7" path="res://assets/scenes/charecters/player/states/tool.gd" id="7_tool"]
-[ext_resource type="Script" uid="uid://cwdbgkgkewish" path="res://assets/scenes/charecters/player/player.gd" id="player_script"]
+[ext_resource type="Script" uid="uid://dpa378ejy7kmo" path="res://scripts/player/states/idle.gd" id="4_amh8i"]
+[ext_resource type="Script" uid="uid://iesckqvkpyl3" path="res://scripts/player/state_machine/node_state_machine.gd" id="4_xhgwt"]
+[ext_resource type="Script" uid="uid://dchmba5jktnq7" path="res://scripts/player/states/walk.gd" id="5_ach0f"]
+[ext_resource type="Script" uid="uid://67mkct8x0eu7" path="res://scripts/player/states/tool.gd" id="7_tool"]
+[ext_resource type="Script" uid="uid://cwdbgkgkewish" path="res://scripts/player/player.gd" id="player_script"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ugcs3"]
 atlas = ExtResource("1_7m2h8")
