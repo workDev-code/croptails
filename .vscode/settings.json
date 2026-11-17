@@ -7,6 +7,10 @@
         "/^godot --headless --path \\. -s tools/generate_player_spriteframes\\.gd$/": {
             "approve": true,
             "matchCommandLine": true
+        },
+        "/^printf '\\\\n--- characters/player ---\\\\n' && find assets/scenes/characters/player -maxdepth 2 -type f \\| sort && printf '\\\\n--- charecters/player ---\\\\n' && find assets/scenes/charecters/player -maxdepth 2 -type f \\| sort$/": {
+            "approve": true,
+            "matchCommandLine": true
         }
     }
 }
