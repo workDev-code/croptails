@@ -17,22 +17,17 @@ func physics_update(_delta: float) -> void:
 	if actor == null:
 		return
 
-	var input_vector := Vector2(
-		Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left"),
-		Input.get_action_strength("walk_down") - Input.get_action_strength("walk_up")
-	)
+	var player := actor as Player
+	if player == null:
+		return
+
+	var input_vector: Vector2 = player.get_movement_input()
 
 	if input_vector == Vector2.ZERO:
 		state_machine.change_state(PlayerConstants.State.IDLE)
 		return
 
-	if actor.has_method("update_facing_from_vector"):
-		actor.update_facing_from_vector(input_vector)
-
-	var move_speed: float = 90.0
-	if actor.has_method("get_movement_input"):
-		move_speed = actor.MOVE_SPEED
-
+	var move_speed: float = player.MOVE_SPEED
 	actor.velocity = input_vector.normalized() * move_speed
 	actor.move_and_slide()
 

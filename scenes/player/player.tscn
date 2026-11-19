@@ -16,9 +16,10 @@ script = ExtResource("player_script")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=179092930]
 position = Vector2(-6, 0)
 sprite_frames = ExtResource("2_75vfm")
-animation = &"idle_back"
+animation = &"tilling_left"
 autoplay = "idle_front"
-frame_progress = 0.9945105
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=991421604]
 position = Vector2(-6, -1)

@@ -17,10 +17,11 @@ func physics_update(_delta: float) -> void:
 	if actor == null:
 		return
 
-	var input_vector := Vector2(
-		Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left"),
-		Input.get_action_strength("walk_down") - Input.get_action_strength("walk_up")
-	)
+	var player := actor as Player
+	if player == null:
+		return
+
+	var input_vector: Vector2 = player.get_movement_input()
 
 	if input_vector != Vector2.ZERO:
 		state_machine.change_state(PlayerConstants.State.WALK)

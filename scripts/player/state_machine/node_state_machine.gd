@@ -70,6 +70,10 @@ func change_state(state_name: Variant) -> void:
 		return
 
 	if current_state != null:
+		var current_key := String(current_state.name).to_upper()
+		var next_key := key.to_upper()
+		if current_key != next_key:
+			print("[STATE] %s -> %s" % [current_key, next_key])
 		current_state.exit()
 
 	current_state = states[key]
@@ -77,6 +81,8 @@ func change_state(state_name: Variant) -> void:
 		push_error("NodeStateMachine: target state is null after lookup.")
 		return
 
+	if actor != null:
+		actor.current_state = key.capitalize()
 	current_state.enter()
 
 

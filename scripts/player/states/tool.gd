@@ -12,13 +12,21 @@ func enter() -> void:
 		return
 	actor.velocity = Vector2.ZERO
 	if animated_sprite != null:
-		animated_sprite.play(actor.get_animation_name("tilling"))
+		var player := actor as Player
+		if player == null:
+			return
+		var tool_key: String = player.get_selected_tool_key()
+		var animation_name: String = player.get_animation_name(tool_key)
+		animated_sprite.play(animation_name)
+		print("[ANIMATION] Playing: %s" % animation_name)
 
 
 func on_animation_finished() -> void:
-	if state_machine == null:
+	if animated_sprite == null:
 		return
-	state_machine.change_state(PlayerConstants.State.IDLE)
+	print("[ANIMATION] Finished: %s" % animated_sprite.animation)
+	if state_machine != null:
+		state_machine.change_state(PlayerConstants.State.IDLE)
 
 
 func physics_update(_delta: float) -> void:

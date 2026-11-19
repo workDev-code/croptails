@@ -11,6 +11,10 @@
         "/^printf '\\\\n--- characters/player ---\\\\n' && find assets/scenes/characters/player -maxdepth 2 -type f \\| sort && printf '\\\\n--- charecters/player ---\\\\n' && find assets/scenes/charecters/player -maxdepth 2 -type f \\| sort$/": {
             "approve": true,
             "matchCommandLine": true
+        },
+        "/^command -v godot \\|\\| command -v godot4 \\|\\| command -v godot4\\.6$/": {
+            "approve": true,
+            "matchCommandLine": true
         }
     }
 }

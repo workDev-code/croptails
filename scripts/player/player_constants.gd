@@ -14,6 +14,12 @@ enum State {
 	TOOL,
 }
 
+enum Tool {
+	CHOPPING,
+	TILLING,
+	WATERING,
+}
+
 
 static func facing_to_name(facing: Facing) -> String:
 	match facing:
@@ -39,3 +45,27 @@ static func state_to_key(state: State) -> String:
 			return "tool"
 		_:
 			return "idle"
+
+
+static func tool_to_key(tool: Tool) -> String:
+	match tool:
+		Tool.CHOPPING:
+			return "chopping"
+		Tool.TILLING:
+			return "tilling"
+		Tool.WATERING:
+			return "watering"
+		_:
+			return "tilling"
+
+
+static func tool_to_label(tool: Tool) -> String:
+	match tool:
+		Tool.CHOPPING:
+			return "CHOPPING"
+		Tool.TILLING:
+			return "TILLING"
+		Tool.WATERING:
+			return "WATERING"
+		_:
+			return "TILLING"
