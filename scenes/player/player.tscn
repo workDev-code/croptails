@@ -8,13 +8,13 @@
 [ext_resource type="Script" uid="uid://bb6ryovksylot" path="res://scripts/player/player.gd" id="player_script"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_os4sw"]
+radius = 4.0
 
 [node name="Player" type="CharacterBody2D" unique_id=21755249]
 position = Vector2(222, 86)
 script = ExtResource("player_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=179092930]
-position = Vector2(-6, 0)
 sprite_frames = ExtResource("2_75vfm")
 animation = &"tilling_left"
 autoplay = "idle_front"
@@ -22,7 +22,7 @@ frame = 1
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=991421604]
-position = Vector2(-6, -1)
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_os4sw")
 
 [node name="StateMachine" type="Node" parent="." unique_id=655864341]
