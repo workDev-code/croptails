@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 const MOVE_SPEED: float = 90.0
+const DEBUG_MOVEMENT: bool = false
 
 var facing: PlayerConstants.Facing = PlayerConstants.Facing.FRONT
 var current_state: String = "Idle"
@@ -25,7 +26,8 @@ func get_movement_input() -> Vector2:
 
 	if movement_key != last_movement_key:
 		last_movement_key = movement_key
-		print("[INPUT] Movement: %s" % movement_key)
+		if DEBUG_MOVEMENT:
+			print("[INPUT] Movement: %s" % movement_key)
 
 	return input_vector
 
@@ -91,4 +93,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("interact"):
-		print("[INPUT] Interaction requested")
+		try_interact()
+
+
+func try_interact() -> void:
+	for node in get_tree().get_nodes_in_group("interactable"):
+		var interactable := node as Interactable
+		if interactable != null and interactable.overlaps_body(self):
+			interactable.interact(self)
+			return
+	print("[INPUT] Interaction requested: no target")
+
+
+func _ready() -> void:
+	add_to_group("player")
+	print("[PLAYER] Ready: %s" % name)

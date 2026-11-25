@@ -13,6 +13,8 @@ Responsibilities:
 
 @export var initial_state: PlayerConstants.State = PlayerConstants.State.IDLE
 
+const DEBUG_MOVEMENT: bool = false
+
 var actor: CharacterBody2D
 var animated_sprite: AnimatedSprite2D
 var current_state: NodeState
@@ -73,7 +75,8 @@ func change_state(state_name: Variant) -> void:
 		var current_key := String(current_state.name).to_upper()
 		var next_key := key.to_upper()
 		if current_key != next_key:
-			print("[STATE] %s -> %s" % [current_key, next_key])
+			if DEBUG_MOVEMENT:
+				print("[STATE] %s -> %s" % [current_key, next_key])
 		current_state.exit()
 
 	current_state = states[key]

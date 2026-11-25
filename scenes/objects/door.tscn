@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bqhjkj2l2gykj"]
 
 [ext_resource type="Texture2D" uid="uid://eu32qem675xi" path="res://assets/game/tilesets/doors.png" id="1_ba8gm"]
+[ext_resource type="PackedScene" uid="uid://djxk8q2ntuvw0" path="res://scenes/components/interactable.tscn" id="2_uw3m6"]
+[ext_resource type="Script" uid="uid://dkhdskcox73xp" path="res://scripts/objects/door.gd" id="3_door_script"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6xrn"]
 atlas = ExtResource("1_ba8gm")
@@ -87,6 +89,7 @@ animations = [{
 size = Vector2(16, 16)
 
 [node name="Door" type="StaticBody2D" unique_id=215465066]
+script = ExtResource("3_door_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=408751251]
 sprite_frames = SubResource("SpriteFrames_xg3tq")
@@ -94,3 +97,6 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300000002]
 shape = SubResource("RectangleShape2D_door")
+
+[node name="InteractableComponent" parent="." unique_id=1536497624 instance=ExtResource("2_uw3m6")]
+position = Vector2(-1, -7)
